@@ -1,8 +1,9 @@
-this.xxhalforc_background <- this.inherit("scripts/skills/backgrounds/character_background", {
+this.fb_halforc_background <- this.inherit("scripts/skills/backgrounds/character_background", {
 	m = {},
 	function create()
 	{
 		this.character_background.create();
+		this.m.ID = "background.fb_halforc";
 		this.m.Faces = this.Const.Faces.AllMale;
 		this.m.Hairs = null;
 		this.m.HairColors = this.Const.HairColors.All;

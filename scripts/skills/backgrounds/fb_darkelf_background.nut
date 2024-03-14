@@ -1,9 +1,9 @@
-this.xxdarkelf_background <- this.inherit("scripts/skills/backgrounds/character_background", {
+this.fb_darkelf_background <- this.inherit("scripts/skills/backgrounds/character_background", {
 	m = {},
 	function create()
 	{
 		this.character_background.create();
-		this.m.ID = "background.xxherosp";
+		this.m.ID = "background.fb_darkelf";
 		this.m.Name = "High Elf";
 		this.m.Icon = "ui/xxherohighelf_icon.png";
 		this.m.BackgroundDescription = "High Elves are the oldest and purest bloodline of ancient elf races. [color=" + this.Const.UI.Color.NegativeValue + "](Warning: This character cannot use skill books.)[/color]";

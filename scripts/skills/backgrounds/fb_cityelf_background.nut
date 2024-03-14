@@ -1,9 +1,9 @@
-this.xxelf_background <- this.inherit("scripts/skills/backgrounds/character_background", {
+this.fb_cityelf_background <- this.inherit("scripts/skills/backgrounds/character_background", {
 	m = {},
 	function create()
 	{
 		this.character_background.create();
-		this.m.ID = "background.xxelf";
+		this.m.ID = "background.fb_cityelf";
 		this.m.Name = "City Elf";
 		this.m.Icon = "ui/xxelf_icon.png";
 		this.m.BackgroundDescription = "Elves are an ancient race from beyond the sea. While their brethren continue the fights in the forest, city elves tend to support the dying resistance movement indirectly and also enjoy the fineries which the dirty human cities have to offer. They are long lived, but have a low fertility rate and as a result are experienced fighters who don\'t at all care to die in the squables of humans who they view as a lesser race.";

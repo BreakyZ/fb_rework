@@ -1,9 +1,9 @@
-this.xxelf_background <- this.inherit("scripts/skills/backgrounds/character_background", {
+this.fb_forestelf_background <- this.inherit("scripts/skills/backgrounds/character_background", {
 	m = {},
 	function create()
 	{
 		this.character_background.create();
-		this.m.ID = "background.xxelf";
+		this.m.ID = "background.fb_forestelf";
 		this.m.Name = "Forest Elf";
 		this.m.Icon = "ui/xxelf_icon.png";
 		this.m.BackgroundDescription = "Elves are an ancient race who claim ancestral territories in the forests from before any human can remember and are so far denied their coveted Elven Kingdom. While their brethren are enjoying what little the human cities have to offer, forest elves fight directly against the humans from small forest camps, raiding caravans and taking prisoners for ransom. The once proud race\'s numbers dwindle as their longevity and low birthrates can\'t match the humans. Despite being deadly fighters the forest elves live much like brigands and enter mercenary employment very rarely.";

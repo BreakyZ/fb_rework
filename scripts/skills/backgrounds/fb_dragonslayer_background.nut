@@ -1,9 +1,9 @@
-this.xxdragonslayer_background <- this.inherit("scripts/skills/backgrounds/character_background", {
+this.fb_dragonslayer_background <- this.inherit("scripts/skills/backgrounds/character_background", {
 	m = {},
 	function create()
 	{
 		this.character_background.create();
-		this.m.ID = "background.xxherosp";
+		this.m.ID = "background.fb_dragonslayer";
 		this.m.Name = "Dragon Slayer";
 		this.m.Icon = "ui/xxherocrimson_icon.png";
 		this.m.BackgroundDescription = "Once, dragons ruled the skies and struck fear into the hearts of men, and dragon slayers lived to hunt them down. But now, dragons are nearly gone. Left without purpose, many of them became ordinary mercenaries.";

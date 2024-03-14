@@ -1,8 +1,9 @@
-this.xxundead_background <- this.inherit("scripts/skills/backgrounds/character_background", {
+this.fb_undead_background <- this.inherit("scripts/skills/backgrounds/character_background", {
 	m = {},
 	function create()
 	{
 		this.character_background.create();
+		this.m.ID = "background.fb_undead";
 		this.m.Faces = this.Const.Faces.WildMale;
 		this.m.Hairs = null;
 		this.m.HairColors = this.Const.HairColors.All;

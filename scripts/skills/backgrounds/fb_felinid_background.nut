@@ -1,8 +1,9 @@
-this.xxfelinid_background <- this.inherit("scripts/skills/backgrounds/character_background", {
+this.fb_felinid_background <- this.inherit("scripts/skills/backgrounds/character_background", {
 	m = {},
 	function create()
 	{
 		this.character_background.create();
+		this.m.ID = "background.fb_felinid";
 		this.m.Name = "Felinid";
 		this.m.Icon = "ui/perks/perk_07.png";
 		this.m.BackgroundDescription = "A rare sight in the northern kingdoms, felinids are a race of cat-like people that hail from untamed and dangerous jungles far south, where few dare to wander and even fewer return. They are known for their strength and agility, aswell as sharp senses, making them formidable mercenaries.";

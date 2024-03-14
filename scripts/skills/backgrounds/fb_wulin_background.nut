@@ -1,9 +1,9 @@
-this.xxwulin_background <- this.inherit("scripts/skills/backgrounds/character_background", {
+this.fb_wulin_background <- this.inherit("scripts/skills/backgrounds/character_background", {
 	m = {},
 	function create()
 	{
 		this.character_background.create();
-		this.m.ID = "background.xxwulin";
+		this.m.ID = "background.fb_wulin";
 		this.m.Name = "Wu Lin";
 		this.m.Icon = "ui/xxwulin_icon.png";
 		this.m.BackgroundDescription = "Wu Lin is an outlaw from the Eastern Empire. Wu Lin\'s unique oriental fighting style is elusive and instills fear in his enemies.";
