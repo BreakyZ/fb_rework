@@ -21,6 +21,7 @@ this.xxfantasytown <- this.inherit("scripts/entity/world/settlement", {
 			"fb_forestelf_background",
 			"fb_hobgoblin_background",
 			"fb_halforc_background",
+			"fb_darkelf_background"
 			//"fb_undead_background",
 			//"fb_wulin_background",
 			//legends

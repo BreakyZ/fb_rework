@@ -4,180 +4,338 @@ this.fb_darkelf_background <- this.inherit("scripts/skills/backgrounds/character
 	{
 		this.character_background.create();
 		this.m.ID = "background.fb_darkelf";
-		this.m.Name = "High Elf";
-		this.m.Icon = "ui/xxherohighelf_icon.png";
-		this.m.BackgroundDescription = "High Elves are the oldest and purest bloodline of ancient elf races. [color=" + this.Const.UI.Color.NegativeValue + "](Warning: This character cannot use skill books.)[/color]";
-		this.m.GoodEnding = "%name% retired from %companyname%. After retirement, she continued her life as a mercenary and adventurer, gaining fame for her many exploits, and her story has become legendary and passed down through generations.";
-		this.m.BadEnding = "%name% retired from %companyname%. Since then, no one has heard any news about %name%";
-		this.m.HiringCost = 10000;
-		this.m.DailyCost = 50;
+		this.m.Name = "Dark Elf";
+		this.m.Icon = "ui/xxelf_icon.png";
+		this.m.BackgroundDescription = "Elves are an ancient race who claim ancestral territories in the forests from before any human can remember and are so far denied their coveted Elven Kingdom. While their foolish kin struggle as their race goes exinct, dark elves have found new power by turning their back on the elven gods and embracing Davkul. This move might seem desperate, but has awarded the dark elves strength and ruthlessness beyond measure.";
+		this.m.GoodEnding = "While the %companyname% continued on with great success, %name% the elf eventually saw fit to leave it all behind. He returned to the forests, finding a place among his own kind. He rarely showed the grim reality of hunting humans, but you have to imagine he\'d just rather stop doing it. As far as you know, he\'s doing well for himself these days.";
+		this.m.BadEnding = "With the decline of the %companyname% readily obvious, %name% the elf departed from the company and returned to the forest. Unfortunately, his people were not ready to welcome him back. He left to find his own place to settle down. He has not been seen since.";
+		this.m.HiringCost = 500;
+		this.m.DailyCost = 35;
 		this.m.Excluded = [
 			"trait.dumb",
-			"trait.greedy",
-			"trait.night_blind",
-			"trait.short_sighted",
-			"trait.superstitious",
-			"trait.paranoid",
+			"trait.weasel",
 			"trait.fear_undead",
 			"trait.fear_beasts",
-			"trait.fear_greenskins",
-			"trait.ailing",
+			"trait.hate_beasts",
+			"trait.night_blind",
 			"trait.clubfooted",
-			"trait.irrational",
-			"trait.hesitant",
-			"trait.tiny",
-			"trait.fragile",
+			"trait.brute",
+			"trait.short_sighted",
+			"trait.fat",
 			"trait.clumsy",
-			"trait.fainthearted",
+			"trait.gluttonous",
+			"trait.asthmatic",
+			"trait.ailing",
 			"trait.craven",
-			"trait.bleeder",
 			"trait.dastard",
-			"trait.insecure",
-			"trait.asthmatic"
+			"trait.drunkard"
 		];
-		this.m.Faces = this.Const.Faces.AllMale;
+		this.m.Titles = [
+			"the Deerhunter",
+			"Woodstalker",
+			"the Woodsman",
+			"the Hunter",
+			"True-Shot",
+			"One Shot",
+			"Eagle Eye"
+		];
+		this.m.Faces = this.Const.Faces.SmartMale;
 		this.m.Hairs = null;
-		this.m.HairColors = this.Const.HairColors.Old;
+		this.m.HairColors = this.Const.HairColors.All;
 		this.m.Beards = null;
 		this.m.Bodies = this.Const.Bodies.Skinny;
 		this.m.BeardChance = 0;
-		this.m.Names = this.Const.Strings.AncientDeadNames;
-	  if("LegendMod" in this.Const)
-	  {
-		this.m.BackgroundType = this.Const.BackgroundType.Combat;
-		this.m.AlignmentMin = this.Const.LegendMod.Alignment.Dreaded;
-		this.m.AlignmentMax = this.Const.LegendMod.Alignment.Saintly;
-		this.m.Modifiers.Ammo = this.Const.LegendMod.ResourceModifiers.Ammo[1];
-		this.m.Modifiers.ArmorParts = this.Const.LegendMod.ResourceModifiers.ArmorParts[1];
-		this.m.Modifiers.Repair = this.Const.LegendMod.ResourceModifiers.Repair[1];
-		this.m.Modifiers.Salvage = this.Const.LegendMod.ResourceModifiers.Salvage[1];
-		this.m.Modifiers.Training = this.Const.LegendMod.ResourceModifiers.Training[2];
-		this.m.PerkTreeDynamicMins.Defense = 3;
-		this.m.PerkTreeDynamicMins.Enemy = 2;
+		this.m.Level = this.Math.rand(1, 2);
+		this.m.BackgroundType = this.Const.BackgroundType.Combat | this.Const.BackgroundType.Ranger | this.Const.BackgroundType.ExpertHunter;
+		this.m.Modifiers.Ammo = this.Const.LegendMod.ResourceModifiers.Ammo[2];
+		this.m.Modifiers.Hunting = this.Const.LegendMod.ResourceModifiers.Hunting[3];
+		this.m.Modifiers.Fletching = this.Const.LegendMod.ResourceModifiers.Fletching[2];
+		this.m.Modifiers.Scout = this.Const.LegendMod.ResourceModifiers.Scout[2];
+		this.m.Modifiers.Terrain = [
+			0.0,
+			0.0,
+			0.0,
+			0.0,
+			0.0,
+			0.05,
+			0.05,
+			0.05,
+			0.05,
+			0.0,
+			0.0,
+			0.0,
+			0.01,
+			0.01,
+			0.01,
+			0.0,
+			0.0,
+			0.0,
+			0.0
+		];
 		this.m.PerkTreeDynamic = {
 			Weapon = [
-				this.Const.Perks.GreatSwordTree,
-				this.Const.Perks.PolearmTree,
-				this.Const.Perks.AxeTree,
-				this.Const.Perks.MaceTree,
-				this.Const.Perks.FlailTree,
-				this.Const.Perks.HammerTree,
-				this.Const.Perks.SpearTree,
-				this.Const.Perks.SwordTree,
-				this.Const.Perks.DaggerTree,
 				this.Const.Perks.BowTree,
 				this.Const.Perks.CrossbowTree,
-				this.Const.Perks.ShieldTree,
+				this.Const.Perks.SwordTree,
 				this.Const.Perks.ThrowingTree
 			],
 			Defense = [
-				this.Const.Perks.LightArmorTree,
-				this.Const.Perks.MediumArmorTree,
-				this.Const.Perks.HeavyArmorTree
+				this.Const.Perks.LightArmorTree
 			],
 			Traits = [
-				this.Const.Perks.CalmTree,
-				this.Const.Perks.OrganisedTree,
-				this.Const.Perks.IndestructibleTree,
 				this.Const.Perks.AgileTree,
-				this.Const.Perks.DeviousTree,
-				this.Const.Perks.TrainedTree,
+				this.Const.Perks.FastTree,
 				this.Const.Perks.ViciousTree,
-				this.Const.Perks.SturdyTree,
 				this.Const.Perks.FitTree,
-				this.Const.Perks.LargeTree
+				this.Const.Perks.DeviousTree
 			],
-			Enemy = [],
+			Enemy = [
+				this.Const.Perks.DirewolfTree,
+				this.Const.Perks.SpiderTree,
+				this.Const.Perks.SchratTree
+			],
 			Class = [],
 			Magic = []
 		};
-	  };
-	}
-
-	function getTooltip()
-	{
-		return [
-			{
-				id = 1,
-				type = "title",
-				text = this.getName()
-			},
-			{
-				id = 2,
-				type = "description",
-				text = this.getDescription()
-			},
-			{
-				id = 3,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "[color=#135213]+20%[/color] Ranged skill damage"
-			},
-			{
-				id = 4,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "[color=#135213]+2[/color] Vision"
-			},
-			{
-				id = 5,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "[color=#135213]+5[/color] Health and Fatigue regeneration per turn"
-			},
-			{
-				id = 6,
-				type = "text",
-				icon = "ui/icons/special.png",
-				text = "When killing enemy: [color=#135213]+2[/color] AP, [color=#135213]-10[/color] fatigue (cannot exceed 9 AP)"
-			}
+		
+		local maleNames =
+		[
+			"Aeron",
+			"Afon",
+			"Aled",
+			"Alun",
+			"Alwyn",
+			"Aneirin",
+			"Arwel",
+			"Arwyn",
+			"Bedwyr",
+			"Berwyn",
+			"Bleddyn",
+			"Brynmor",
+			"Bron",
+			"Cadell",
+			"Cadeyrn",
+			"Cadfael",
+			"Cadwalader",
+			"Cadwgan",
+			"Caerwyn",
+			"Caradoc",
+			"Carwyn",
+			"Cefin",
+			"Cledwyn",
+			"Cynfelyn",
+			"Cystennin",
+			"Dafydd",
+			"Delwyn",
+			"Deryn",
+			"Dilwyn",
+			"Drystan",
+			"Dylan",
+			"Eifion",
+			"Eirwyn",
+			"Ellis",
+			"Emlyn",
+			"Emrys",
+			"Emyr",
+			"Eurig",
+			"Evan",
+			"Folant",
+			"Gareth",
+			"Geraint",
+			"Gerallt",
+			"Gethin",
+			"Glendower",
+			"Glyn",
+			"Griffith",
+			"Gronw",
+			"Gwallter",
+			"Gwilym",
+			"Gwydion",
+			"Gwyn",
+			"Gwynedd",
+			"Gwynfor",
+			"Heddwyn",
+			"Hefin",
+			"Huw",
+			"Hywel",
+			"Iago",
+			"Idris",
+			"Idwal",
+			"Iefan",
+			"Iestyn",
+			"Ieuan",
+			"Ifan",
+			"Ilar",
+			"Illtyd",
+			"Ioan",
+			"Iorwerth",
+			"Islwyn",
+			"Ithel",
+			"Ivor",
+			"Iwan",
+			"Lleu",
+			"Llywelyn",
+			"Luc",
+			"Madoc",
+			"Maldwyn",
+			"Martyn",
+			"Maxen",
+			"Meical",
+			"Meirion",
+			"Merfyn",
+			"Meurig",
+			"Morgan",
+			"Myrddin",
+			"Neifion",
+			"Ofydd",
+			"Owain",
+			"Padrig",
+			"Pedr",
+			"Pryce",
+			"Pryderi",
+			"Reece",
+			"Rheinallt",
+			"Rhisiart",
+			"Rhodri",
+			"Rhydderch",
+			"Rhys",
+			"Roderick",
+			"Talfryn",
+			"Taliesin",
+			"Tegid",
+			"Tudwal",
+			"Vaughan",
+			"Wynn",
 		];
+
+		//this.m.Names = this.Const.Strings.AncientDeadNames;
+		this.m.Names = maleNames;
 	}
 
+	function setGender( _gender = -1 )
+	{
+		if (_gender == -1)
+		{
+			_gender = ::Legends.Mod.ModSettings.getSetting("GenderEquality").getValue() == "Disabled" ? 0 : ::Math.rand(0, 1);
+		}
+
+		if (_gender != 1)
+		{
+			return;
+		}
+
+		local femaleNames =
+		[
+			"Aerona",
+			"Aeronwen",
+			"Aeronwy"
+			"Alis",
+			"Angharad",
+			"Anwen"
+			"Arianwen"
+			"Bethan",
+			"Betrys",
+			"Blodeuyn",
+			"Blodwen",
+			"Branwen",
+			"Briallen",
+			"Bronwen",
+			"Bryn",
+			"Cadi",
+			"Carys",
+			"Catrin",
+			"Ceinwen",
+			"Celyn",
+			"Ceri",
+			"Ceridwen",
+			"Cerys",
+			"Cristyn",
+			"Delyth",
+			"Dilwen",
+			"Dilys",
+			"Efa",
+			"Eilwen",
+			"Eira",
+			"Eirlys",
+			"Eirwen",
+			"Elain",
+			"Elen",
+			"Eleri",
+			"Elin",
+			"Eluned",
+			"Enid",
+			"Esyllt",
+			"Eurwen",
+			"Ffion",
+			"Fflur",
+			"Ffraid",
+			"Gaenor",
+			"Gladys",
+			"Glenice",
+			"Glenys",
+			"Gwawr",
+			"Gwen",
+			"Gwenda",
+			"Gwendolen",
+			"Gwenfrewi",
+			"Gwenllian",
+			"Gwenneth",
+			"Gwyneira",
+			"Gwyneth",
+			"Haf",
+			"Hefina",
+			"Heledd",
+			"Heulwen",
+			"Lleucu",
+			"Llewella",
+			"Lowri",
+			"Luned",
+			"Mair",
+			"Mairwen",
+			"Mallt",
+			"Mari",
+			"Megan",
+			"Meinir",
+			"Meinwen",
+			"Meiriona",
+			"Meredith",
+			"Mererid",
+			"Morwen",
+			"Myfanwy",
+			"Nerys",
+			"Olwen",
+			"Owena",
+			"Rhiannon",
+			"Rhonwen",
+			"Rhosyn",
+			"Sawyl",
+			"Seren",
+			"Siwan",
+			"Tegan",
+			"Tegwen",
+			"Tesni",
+			"Tydfil",
+			"Winifred",
+		];
+		
+		this.m.Names = femaleNames;
+		this.addBackgroundType(this.Const.BackgroundType.Female);
+		this.m.GoodEnding = "While the %companyname% continued on with great success, %name% the elf eventually saw fit to leave it all behind. He returned to the forests, finding a place among her own kind. She rarely showed the grim reality of hunting humans, but you have to imagine she\'d just rather stop doing it. As far as you know, she\'s doing well for herself these days.";
+		this.m.BadEnding = "With the decline of the %companyname% readily obvious, %name% the elf departed from the company and returned to the forest. Unfortunately, her people were not ready to welcome her back. She left to find her own place to settle down. She has not been seen since.";
+	}
+	
 	function onBuildDescription()
 	{
-		return "%name% is a High Elf, belonging to the oldest and purest bloodline of the ancient elf races. [color=" + this.Const.UI.Color.NegativeValue + "](Warning: This character cannot use skill books.)[/color]";
+		if (this.isBackgroundType(this.Const.BackgroundType.Female))
+		{
+			return "{Hidden behind hulking and horrific armor, %name%\'s face has surprisingly fair features even if she has the complexion of a cadaver. | %name%, clad in the signature dark elf armor is something out of a nightmare. She is feared and reviled all the same. | As a ghastly voice booms inside %name%\'s helmet, you become unsure if there is even someone alive inside. | %name% has unmistakable elven features, but she looks much paler than her kin. } {Through dark rituals to her new god this elf has attained great power, some even say she has become impossible to defeat in single combat. | This elf followed years of warring against humans with years of ritual slaughter to attain great prowess and skill in battle. | The unnerving confidence with which she speaks makes it certain that there is little on the battlefield to match her strength. | You can tell this knife ear glides through battlefields like a venomous snake. | Very secretive about her fighting techniques, the elf has done unspeakable things to become certain death to her enemies. } {You are unsure if %name% will bring death to your enemies or herald the end of the world, but you are glad she fights for your coin and you're on the same side of the battlefield. | For %name% the elven ideals are forever doomed, so she will sacrifice to Davkul until there are none left. | The devotion with which %name% once fought for the elven cause is now replaced with cold sadism for her future offerings to Davkul.}";
+		}
+		else
+		{
+			return "{Hidden behind hulking and horrific armor, %name%\'s face has surprisingly fair features even if he has the complexion of a cadaver. | %name%, clad in the signature dark elf armor is something out of a nightmare. He is feared and reviled all the same. | As a ghastly voice booms inside %name%\'s helmet, you become unsure if there is even someone alive inside. | %name% has unmistakable elven features, but he looks much paler than his kin. } {Through dark rituals to his new god this elf has attained great power, some even say he has become impossible to defeat in single combat. | This elf followed years of warring against humans with years of ritual slaughter to attain great prowess and skill in battle. | The unnerving confidence with which he speaks makes it certain that there is little on the battlefield to match his strength. | You can tell this knife ear glides through battlefields like a venomous snake. | Very secretive about his fighting techniques, the elf has done unspeakable things to become certain death to his enemies. } {You are unsure if %name% will bring death to your enemies or herald the end of the world, but you are glad he fights for your coin and you're on the same side of the battlefield. | For %name% the elven ideals are forever doomed, so he will sacrifice to Davkul until there are none left. | The devotion with which %name% once fought for the elven cause is now replaced with cold sadism for his future offerings to Davkul.}";
+		}
 	}
-
-	function onChangeAttributes()
-	{
-		local c = {
-			Hitpoints = [
-				10,
-				10
-			],
-			Bravery = [
-				10,
-				10
-			],
-			Stamina = [
-				10,
-				10
-			],
-			MeleeSkill = [
-				10,
-				10
-			],
-			RangedSkill = [
-				25,
-				25
-			],
-			MeleeDefense = [
-				5,
-				5
-			],
-			RangedDefense = [
-				5,
-				5
-			],
-			Initiative = [
-				15,
-				15
-			]
-		};
-		return c;
-	}
-
+	
 	function onSetAppearance()
 	{
 		local actor = this.getContainer().getActor();
@@ -186,115 +344,106 @@ this.fb_darkelf_background <- this.inherit("scripts/skills/backgrounds/character
 		local xhair = actor.getSprite("hair");
 		local tattoo_body = actor.getSprite("tattoo_body");
 		local tattoo_head = actor.getSprite("tattoo_head");
-		xbody.setBrush("bust_naked_body_78" + this.Math.rand(69, 70));
-		xhead.setBrush("bust_head_787" + this.Math.rand(0, 1));
-		xhair.setBrush("hair_elf_0" + this.Math.rand(1, 6));
-		local pp = this.Math.rand(0, 3)
-		if (pp == 1)
+		
+		if (!this.isBackgroundType(this.Const.BackgroundType.Female))
 		{
-			tattoo_body.setBrush("warpaint_01_" + actor.getSprite("body").getBrush().Name);
-			tattoo_body.Visible = true;
-			tattoo_head.setBrush("warpaint_01_head");
-			tattoo_head.Visible = true;
+			local pp = this.Math.rand(0, 3)
+			if (pp == 1)
+			{
+				tattoo_body.setBrush("warpaint_01_" + xbody.getBrush().Name);
+				tattoo_body.Visible = true;
+				tattoo_head.setBrush("warpaint_01_head");
+				tattoo_head.Visible = true;
+			}
+			else
+			if (pp == 2)
+			{
+				tattoo_body.setBrush("tattoo_02_" + xbody.getBrush().Name);
+				tattoo_body.Visible = true;
+				tattoo_head.setBrush("tattoo_02_head");
+				tattoo_head.Visible = true;
+			}
+			if (this.Math.rand(1, 2) == 1)
+			{
+				xhair.setBrush("hair_elf_0" + this.Math.rand(1, 6));
+			}
+			else
+			{
+				xhair.setBrush("hair_elf_0" + this.Math.rand(1, 3));
+			}
 		}
 		else
-		if (pp == 2)
 		{
-			tattoo_body.setBrush("tattoo_02_" + actor.getSprite("body").getBrush().Name);
-			tattoo_body.Visible = true;
-			tattoo_head.setBrush("tattoo_02_head");
-			tattoo_head.Visible = true;
+			xbody.setBrush("bust_naked_body_78" + this.Math.rand(69, 70));
+			xhead.setBrush("bust_head_787" + this.Math.rand(0, 1));
+			xhair.setBrush("hair_elf_0" + this.Math.rand(1, 6));
 		}
-		tattoo_body.Scale = 0.8;
-		actor.getSprite("permanent_injury_4").setBrush("zombie_rage_eyes");
-		actor.getSprite("permanent_injury_4").Visible = true;
-		actor.getSprite("permanent_injury_4").Color = this.createColor("#ffffff");
-		actor.getSprite("permanent_injury_4").Saturation = 0.3;
-		actor.setSpriteOffset("permanent_injury_4", this.createVec(0, -0.9));
 	}
-
+	
+	function onChangeAttributes()
+	{
+		local c = {
+			Hitpoints = [
+				0,
+				0
+			],
+			Bravery = [
+				0,
+				5
+			],
+			Stamina = [
+				7,
+				5
+			],
+			MeleeSkill = [
+				0,
+				0
+			],
+			RangedSkill = [
+				30,
+				25
+			],
+			MeleeDefense = [
+				0,
+				0
+			],
+			RangedDefense = [
+				0,
+				3
+			],
+			Initiative = [
+				5,
+				10
+			]
+		};
+		return c;
+	}
+	
 	function onAddEquipment()
 	{
-		local items = this.getContainer().getActor().getItems();
-		items.equip(this.new("scripts/items/weapons/war_bow"));
-		items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
-		items.addToBag(this.new("scripts/items/weapons/dagger"));
-	  if("LegendMod" in this.Const)
-	  {
-		items.equip(this.Const.World.Common.pickArmor([
-			[
-				1,
-				"patched_mail_shirt"
-			],
-			[
-				1,
-				"padded_leather"
-			],
-			[
-				1,
-				"basic_mail_shirt"
-			],
-			[
-				1,
-				"worn_mail_shirt"
-			]
-		]));
-	  }
-	  else
-	  {
-		items.equip(this.new("scripts/items/armor/basic_mail_shirt"));
-	  }
-	}
-
-	function onCombatStarted()
-	{
 		local actor = this.getContainer().getActor();
-		actor.m.Sound[this.Const.Sound.ActorEvent.DamageReceived] = [
-			"sounds/enemies/ghost_death_01.wav"
-		];
-		actor.m.Sound[this.Const.Sound.ActorEvent.Death] = [
-			"sounds/enemies/ghost_death_02.wav"
-		];
-		actor.m.Sound[this.Const.Sound.ActorEvent.Fatigue] = [
-			"sounds/enemies/ghastly_touch_01.wav"
-		];
-		actor.m.Sound[this.Const.Sound.ActorEvent.Idle] = [
-			"sounds/enemies/skeleton_idle_01.wav",
-			"sounds/enemies/skeleton_idle_04.wav"
-		];
-		actor.m.Sound[this.Const.Sound.ActorEvent.NoDamageReceived] = actor.m.Sound[this.Const.Sound.ActorEvent.DamageReceived];
-		actor.m.Sound[this.Const.Sound.ActorEvent.Flee] = actor.m.Sound[this.Const.Sound.ActorEvent.DamageReceived];
-	}
-
-	function onAfterUpdate( _properties )
-	{
-		_properties.RangedDamageMult += 0.2;
-		_properties.FatigueRecoveryRate += 5;
-		_properties.HitpointsRecoveryRate += 4;
-		_properties.Vision += 2;
-	}
-
-	function onTurnStart()
-	{
-		local actor = this.getContainer().getActor();
-		actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + 1));
-		actor.setDirty(true);
-		actor.onUpdateInjuryLayer();
-	}
-
-	function onTargetKilled( _targetEntity, _skill )
-	{
-		local actor = this.getContainer().getActor();
-		if (actor.isAlliedWith(_targetEntity))
+		local items = actor.getItems();
+		if (this.Math.rand(1, 2) == 1)
 		{
-			return;
+			if (this.Math.rand(1, 2) == 2)
+			{
+				items.equip(this.new("scripts/items/armor/named/lindwurm_armor"));
+				actor.getSprite("surcoat").setBrush("bust_body_noble_08");
+			}
+			else
+			{
+				local itt = this.new("scripts/items/armor/named/named_sellswords_armor");
+				itt.setVariant(82);
+				items.equip(itt);
+			}
 		}
-		if (this.Tactical.TurnSequenceBar.getActiveEntity() != null && this.Tactical.TurnSequenceBar.getActiveEntity().getID() == actor.getID())
+		else
 		{
-			actor.setActionPoints(this.Math.min(actor.getActionPointsMax(), actor.getActionPoints() + 2));
-			actor.setFatigue(this.Math.max(0, actor.getFatigue() - 10));
-			this.spawnIcon("status_effect_29", this.m.Container.getActor().getTile());
-			actor.setDirty(true);
+			items.equip(this.new("scripts/items/armor/named/named_sellswords_armor"));
+			if (this.Math.rand(1, 3) == 2)
+			{
+				actor.getSprite("surcoat").setBrush("bust_body_noble_0" + this.Math.rand(7, 8));
+			}
 		}
 	}
 

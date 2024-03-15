@@ -328,11 +328,11 @@ this.fb_forestelf_background <- this.inherit("scripts/skills/backgrounds/charact
 	{
 		if (this.isBackgroundType(this.Const.BackgroundType.Female))
 		{
-			return "{%name%\'s beautiful features cannot be hidden even by the dirt and scratches on her face. | %name% is a graceful figure with long sharp ears that speaks to you like you\'re a child. | As %name% speaks with great disdain, her knife ears twitch and you wonder if she\'ll ever follow your orders. | If looks could kill, %name% wouldn't hessitate to take your life with inhuman grace.} {The elf has spent many years being a Gwalch only to be betrayed by human lords. | This elf walks with such grace and ease in the forests, that you look down to check if there aren\'t cobblestone roads under her feet. | The condescending and vile tongue with which %name% speaks to people makes it hard to employ this elf for more than single battles. | You can tell this knife ear glides through battlefields like a venomous snake. | The elf is very secretive about her martial training and honestly a mere mortal couldn\'t grasp it within their lifespan.} {While his goals are not known, %name% will fight for coin like every other person who she looks down on. | Aiming to carry the ideals of the Gwalch forward, %name% reluctantly enters contracts with men who she might have killed on sight in the past. | Seeking to restore the Elven Kingdom by any means necessary, %name% has sold her skills to the highest bidder.}";
+			return "{%name%\'s beautiful features cannot be hidden even by the dirt and scratches on her face. | %name% is a graceful figure with long sharp ears that speaks to you like you\'re a child. | As %name% speaks with great disdain, her knife ears twitch and you wonder if she\'ll ever follow your orders. | If looks could kill, %name% wouldn't hessitate to take your life with inhuman grace.} {The elf has spent many years being a Gwalch only to be betrayed by human lords. | This elf has spent human lifetimes warring against humans and has mastered her craft. | The way she speaks and barks commands shows that %name%, not only took part in the elf rebellion, but was also a commander. | You can tell this knife ear glides through battlefields like a venomous snake. | The elf is very secretive about her martial training and honestly a mere mortal couldn\'t grasp it within their lifespan.} {While her goals are not known, %name% will fight for coin like every other person who she looks down on. | Aiming to carry the ideals of the Gwalch forward, %name% reluctantly enters contracts with men who she might have killed on sight in the past. | Seeking to restore the Elven Kingdom by any means necessary, %name% has sold her skills to the highest bidder.}";
 		}
 		else
 		{
-			return "{%name%\'s beautiful features cannot be hidden even by the dirt and scratches on his face. | %name% is a graceful figure with long sharp ears that speaks to you like you\'re a child. | As %name% speaks with great disdain, his knife ears twitch and you wonder if he\'ll ever follow your orders. | If looks could kill, %name% wouldn't hessitate to take your life with inhuman grace.} {The elf has spent many years being a Gwalch only to be betrayed by human lords. | This elf walks with such grace and ease in the forests, that you look down to check if there aren\'t cobblestone roads under his feet. | The condescending and vile tongue with which %name% speaks to people makes it hard to employ this elf for more than single battles. | You can tell this knife ear glides through battlefields like a venomous snake. | The elf is very secretive about his martial training and honestly a mere mortal couldn\'t grasp it within their lifespan.} {While his goals are not known, %name% will fight for coin like every other person who he looks down on. | Aiming to carry the ideals of the Gwalch forward, %name% reluctantly enters contracts with men who he might have killed on sight in the past. | Seeking to restore the Elven Kingdom by any means necessary, %name% has sold his skills to the highest bidder.}";
+			return "{%name%\'s beautiful features cannot be hidden even by the dirt and scratches on his face. | %name% is a graceful figure with long sharp ears that speaks to you like you\'re a child. | As %name% speaks with great disdain, his knife ears twitch and you wonder if he\'ll ever follow your orders. | If looks could kill, %name% wouldn't hessitate to take your life with inhuman grace.} {The elf has spent many years being a Gwalch only to be betrayed by human lords. | This elf has spent human lifetimes warring against humans and has mastered his craft. | The way he speaks and barks commands shows that %name%, not only took part in the elf rebellion, but was also a commander. | You can tell this knife ear glides through battlefields like a venomous snake. | The elf is very secretive about his martial training and honestly a mere mortal couldn\'t grasp it within their lifespan.} {While his goals are not known, %name% will fight for coin like every other person who he looks down on. | Aiming to carry the ideals of the Gwalch forward, %name% reluctantly enters contracts with men who he might have killed on sight in the past. | Seeking to restore the Elven Kingdom by any means necessary, %name% has sold his skills to the highest bidder.}";
 		}
 	}
 	
@@ -421,37 +421,30 @@ this.fb_forestelf_background <- this.inherit("scripts/skills/backgrounds/charact
 	
 	function onAddEquipment()
 	{
-		local items = this.getContainer().getActor().getItems();
-
-		if (this.Math.rand(0, 1) == 0)
+		local actor = this.getContainer().getActor();
+		local items = actor.getItems();
+		if (this.Math.rand(1, 2) == 1)
 		{
-			items.equip(this.new("scripts/items/weapons/light_crossbow"));
-			items.equip(this.new("scripts/items/ammo/quiver_of_bolts"));
+			if (this.Math.rand(1, 2) == 2)
+			{
+				items.equip(this.new("scripts/items/armor/named/lindwurm_armor"));
+				actor.getSprite("surcoat").setBrush("bust_body_noble_08");
+			}
+			else
+			{
+				local itt = this.new("scripts/items/armor/named/named_sellswords_armor");
+				itt.setVariant(82);
+				items.equip(itt);
+			}
 		}
 		else
 		{
-			items.equip(this.new("scripts/items/weapons/hunting_bow"));
-			items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
+			items.equip(this.new("scripts/items/armor/named/named_sellswords_armor"));
+			if (this.Math.rand(1, 3) == 2)
+			{
+				actor.getSprite("surcoat").setBrush("bust_body_noble_0" + this.Math.rand(7, 8));
+			}
 		}
-
-		items.equip(this.Const.World.Common.pickArmor([
-			[
-				1,
-				"patched_mail_shirt"
-			],
-			[
-				1,
-				"padded_leather"
-			],
-			[
-				1,
-				"basic_mail_shirt"
-			],
-			[
-				1,
-				"worn_mail_shirt"
-			]
-		]));
 	}
 
 });

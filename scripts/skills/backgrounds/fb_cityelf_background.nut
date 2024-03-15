@@ -320,15 +320,15 @@ this.fb_cityelf_background <- this.inherit("scripts/skills/backgrounds/character
 		
 		this.m.Names = femaleNames;
 		this.addBackgroundType(this.Const.BackgroundType.Female);
-		this.m.GoodEnding = "While the %companyname% continued on with great success, %name% the elf eventually saw fit to leave it all behind. He returned to the forests, finding a place among his own kind. He rarely showed the grim reality of hunting humans, but you have to imagine he\'d just rather stop doing it. As far as you know, he\'s doing well for himself these days.";
-		this.m.BadEnding = "With the decline of the %companyname% readily obvious, %name% the elf departed from the company and returned to the forest. Unfortunately, his people were not ready to welcome him back. He left to find his own place to settle down. He has not been seen since.";
+		this.m.GoodEnding = "While the %companyname% continued on with great success, %name% the elf eventually saw fit to leave it all behind. She returned to the forests, finding a place among his own kind. She rarely showed the grim reality of hunting humans, but you have to imagine he\'d just rather stop doing it. As far as you know, he\'s doing well for himself these days.";
+		this.m.BadEnding = "With the decline of the %companyname% readily obvious, %name% the elf departed from the company and returned to the forest. Unfortunately, his people were not ready to welcome him back. She left to find his own place to settle down. She has not been seen since.";
 	}
 	
 	function onBuildDescription()
 	{
 		if (this.isBackgroundType(this.Const.BackgroundType.Female))
 		{
-			return "{%name%\'s fine features, pointed ears and disdain for humans makes her a unique sight in human cities. | %name% is a graceful figure with long sharp ears that speaks to you like you're a child. | With the myriad of scars adorning %name%\'s face, betrays that these fine elven features have experienced several human lifespans in war. | Years of martial training beyond the lifespan of a human show in  %name%\'s fluid movements.} {The elf has spent many years being a Gwalch only to be betrayed by human lords. | It is obvious the elf is used to a certain finery that you can't find in human society, not even amongst the nobility. | The condescending and vile tongue with which %name% speaks to people makes it hard to employ this elf for more than single battles. | You can tell this knife ear glides through battlefields like a venomous snake. | The elf is very secretive about his martial training and honestly a mere mortal couldn't grasp it within their lifespan.} {While his goals are not known, %name% will fight for coin like every other person who she looks down on. | Aiming to carry the ideals of the Gwalch forward, %name% reluctantly enters contracts with men who he might have fought in the past. | Seeking a certain elegant lifestyle, %name% has sold his skills to the highest bidder.}";
+			return "{%name%\'s fine features, pointed ears and disdain for humans makes her a unique sight in human cities. | %name% is a graceful figure with long sharp ears that speaks to you like you're a child. | With the myriad of scars adorning %name%\'s face, betrays that these fine elven features have experienced several human lifespans in war. | Years of martial training beyond the lifespan of a human show in  %name%\'s fluid movements.} {The elf has spent many years being a Gwalch only to be betrayed by human lords. | It is obvious the elf is used to a certain finery that you can't find in human society, not even amongst the nobility. | The condescending and vile tongue with which %name% speaks to people makes it hard to employ this elf for more than single battles. | You can tell this knife ear glides through battlefields like a venomous snake. | The elf is very secretive about his martial training and honestly a mere mortal couldn't grasp it within their lifespan.} {While his goals are not known, %name% will fight for coin like every other person who she looks down on. | Aiming to carry the ideals of the Gwalch forward, %name% reluctantly enters contracts with men who She might have fought in the past. | Seeking a certain elegant lifestyle, %name% has sold his skills to the highest bidder.}";
 		}
 		else
 		{
@@ -434,25 +434,32 @@ this.fb_cityelf_background <- this.inherit("scripts/skills/backgrounds/character
 			items.equip(this.new("scripts/items/ammo/quiver_of_arrows"));
 		}
 
-		items.equip(this.Const.World.Common.pickArmor([
-			[
-				1,
-				"patched_mail_shirt"
-			],
-			[
-				1,
-				"padded_leather"
-			],
-			[
-				1,
-				"basic_mail_shirt"
-			],
-			[
-				1,
-				"worn_mail_shirt"
-			]
-		]));
-	}
+		local clothes =
+		[
+			"scripts/items/legend_armor/cloth/legend_tunic_noble"
+		];
+		
+		local armor =
+		[
+			"scripts/items/legend_armor/plate/legend_armor_leather_noble",
+			"scripts/items/legend_armor/plate/noble_padded",
+			//"scripts/items/legend_armor/plate/legend_noble_scale"
+		];
+		
+		local cloak =
+		[
+			"scripts/items/legend_armor/cloak/decorative_hood"
+		];
 
+		local outfit = this.new(clothes[this.Math.rand(0, clothes.len() - 1)]);
+		outfit.setUpgrade(this.new(armor[this.Math.rand(0, armor.len() - 1)]));
+		
+		if (this.Math.rand(1, 2) == 1)
+		{
+			outfit.setUpgrade(this.new(cloak[this.Math.rand(0, cloak.len() - 1)]));
+		}
+		
+		items.equip(outfit);
+	}
 });
 
