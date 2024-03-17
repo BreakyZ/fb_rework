@@ -326,7 +326,7 @@ this.fb_cityelf_background <- this.inherit("scripts/skills/backgrounds/character
 	
 	function onBuildDescription()
 	{
-		if (this.isBackgroundType(this.Const.BackgroundType.Female)
+		if (this.isBackgroundType(this.Const.BackgroundType.Female))
 		{
 			return "{%name%\'s fine features, pointed ears and disdain for humans makes her a unique sight in human cities. | %name% is a graceful figure with long sharp ears that speaks to you like you're a child. | With the myriad of scars adorning %name%\'s face, betrays that these fine elven features have experienced several human lifespans in war. | Years of martial training beyond the lifespan of a human show in  %name%\'s fluid movements.} {The elf has spent many years being a Gwalch only to be betrayed by human lords. | It is obvious the elf is used to a certain finery that you can't find in human society, not even amongst the nobility. | The condescending and vile tongue with which %name% speaks to people makes it hard to employ this elf for more than single battles. | You can tell this knife ear glides through battlefields like a venomous snake. | The elf is very secretive about his martial training and honestly a mere mortal couldn't grasp it within their lifespan.} {While his goals are not known, %name% will fight for coin like every other person who she looks down on. | Aiming to carry the ideals of the Gwalch forward, %name% reluctantly enters contracts with men who She might have fought in the past. | Seeking a certain elegant lifestyle, %name% has sold his skills to the highest bidder.}";
 		}
